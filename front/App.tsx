@@ -13,29 +13,25 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  Text,
   useColorScheme,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Home from './src/routes/Home';
-import Legal from './src/routes/Legal';
-import Login from './src/routes/Login';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
+  console.log('truc truc truc');
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        hidden={true}
-      />
-      <Login />
-      <Home />
-      <Legal />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Home truc="titi">
+        <Text>Hello world</Text>
+      </Home>
     </SafeAreaView>
   );
 };
@@ -58,5 +54,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+console.log('styles: ', styles);
 
 export default App;
