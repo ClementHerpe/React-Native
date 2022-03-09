@@ -1,41 +1,32 @@
-import React, {useState} from 'react';
-import {Button, Text, View} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import Legal from './Legal';
+import Settings from './Settings';
+import Wall from './Wall';
 
-const Home: React.FC<{
-  truc: string;
-}> = ({truc, children}) => {
-  const [counter, setCounter] = useState(10);
+const Tab = createBottomTabNavigator();
+
+const Home = () => {
+  console.log('homex');
   return (
-    <View>
-      <Text>{truc} works!</Text>
-      <Text>counter: {counter} </Text>
-      <Button
-        title="Increment"
-        onPress={() => {
-          setCounter(counter + 1);
-        }}
-      />
-      <Toto
-        counter={counter}
-        decrement={() => {
-          setCounter(counter - 1);
-        }}
-      />
-      {children}
-    </View>
+    <Tab.Navigator
+      screenOptions={() => ({
+        headerShown: false,
+      })}>
+      <Tab.Screen name="Wall" component={Wall} />
+      <Tab.Screen name="Legal" component={Legal} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
   );
 };
 
-const Toto: React.FC<{
-  counter: number;
-  decrement: () => void;
-}> = ({counter, decrement}) => {
-  return (
-    <>
-      <Text>coucou toto {counter}</Text>
-      <Button title="decrement" onPress={decrement} />
-    </>
-  );
-};
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     padding: 10,
+//     backgroundColor: 'yellow',
+//   },
+// });
 
 export default Home;
